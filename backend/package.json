@@ -1,0 +1,12 @@
+{
+  "name": "termux-panel-backend",
+  "version": "1.0.0",
+  "description": "Backend local para el panel Android — expone estado de pm2/servidor/bot",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
