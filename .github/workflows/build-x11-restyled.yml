@@ -1,4 +1,4 @@
-name: Build X11 Restyled (Library)
+name: Build X11 Restyled APK
 
 on:
   push:
@@ -28,5 +28,11 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Build library
-        run: ./gradlew :android-overlay:assembleRelease
+      - name: Build Debug APK
+        run: ./gradlew :android-overlay:assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: x11-restyled-apk
+          path: x11-restyled/android-overlay/build/outputs/apk/debug/*.apk
