@@ -1,5 +1,6 @@
 package com.fred.x11restyled
 
+import android.util.Log
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
@@ -19,10 +20,13 @@ class BspwmBridge {
         try {
             val process = Runtime.getRuntime().exec(arrayOf("su", "-c", command))
             val reader = BufferedReader(InputStreamReader(process.inputStream))
-            reader.forEachLine { /* log opcional */ }
-            process.waitFor()
+            reader.forEachLine { Log.d("BspwmBridge", it) }
+            val exitCode = process.waitFor()
+            if (exitCode != 0) {
+                Log.w("BspwmBridge", "su -c \"$command\" exited with code $exitCode")
+            }
         } catch (e: Exception) {
-            // TODO: mostrar toast/log de error real si el usuario deniega root
+            Log.e("BspwmBridge", "su -c \"$command\" failed", e)
         }
     }
 
