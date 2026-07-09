@@ -1,0 +1,16 @@
+# ~/.config/sxhkd/sxhkdrc
+# Atajos puente — cuando el GestureDetector de Kotlin esté listo, estos comandos
+# (bspc, rofi) son los MISMOS que la app Android va a invocar por socket.
+# Sirven para probar el WM antes de conectar los gestos reales.
+
+# abrir/cerrar launcher (equivalente al "home pill" del mockup)
+super + space
+    rofi -show drun -theme ~/.config/rofi/x11-restyled.rasi
+
+# cerrar ventana activa (equivalente al swipe-up del mockup)
+super + w
+    bspc node -c
+
+# alternar a la última app (equivalente al swipe lateral del mockup)
+super + Tab
+    bspc node -f last.local

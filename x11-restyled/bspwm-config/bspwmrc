@@ -1,0 +1,22 @@
+#!/data/data/com.termux/files/usr/bin/bash
+# ~/.config/bspwm/bspwmrc
+# Modo "monocle forzado" — una sola ventana fullscreen a la vez, sin bordes, sin gaps.
+# Esto elimina por completo la metáfora de ventanas flotantes de escritorio.
+
+bspc monitor -d I
+
+bspc config border_width       0
+bspc config window_gap         0
+bspc config borderless_monocle true
+bspc config gapless_monocle    true
+bspc config single_monocle     true   # si solo hay 1 ventana, se comporta igual que monocle
+
+# Cualquier ventana nueva entra directo a monocle (fullscreen), no flotante
+bspc config focus_follows_pointer false
+bspc rule -a '*' state=tiled layer=normal
+
+# sxhkd maneja atajos (temporal, hasta que el GestureDetector de Kotlin lo reemplace)
+sxhkd -c ~/.config/sxhkd/sxhkdrc &
+
+# arranca directo en modo monocle
+bspc desktop -l monocle

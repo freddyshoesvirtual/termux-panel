@@ -1,0 +1,32 @@
+name: Build X11 Restyled (Library)
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "x11-restyled/**"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: x11-restyled
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build library
+        run: ./gradlew :android-overlay:assembleRelease

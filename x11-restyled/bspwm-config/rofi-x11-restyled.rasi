@@ -1,0 +1,66 @@
+/* ~/.config/rofi/x11-restyled.rasi
+ * Mismo lenguaje visual del mockup: grafito + ámbar, grid de apps grandes.
+ */
+
+* {
+    graphite-0: #0B0D10;
+    graphite-2: #1B1F25FF;
+    graphite-3: #242A32FF;
+    amber: #F0A94EFF;
+    text-hi: #EEF1F4FF;
+    text-lo: #8B96A3FF;
+
+    background-color: @graphite-0;
+    text-color: @text-hi;
+    font: "JetBrains Mono 11";
+}
+
+window {
+    width: 100%;
+    height: 100%;
+    background-color: @graphite-0;
+    border: 0px;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    padding: 60px;
+}
+
+inputbar {
+    background-color: @graphite-2;
+    border-radius: 16px;
+    padding: 14px 18px;
+    margin: 0 0 30px 0;
+}
+
+listview {
+    columns: 3;
+    lines: 4;
+    spacing: 16px;
+    fixed-height: false;
+}
+
+element {
+    background-color: @graphite-2;
+    border-radius: 16px;
+    padding: 20px;
+    orientation: vertical;
+}
+
+element selected {
+    background-color: @graphite-3;
+    border: 2px;
+    border-color: @amber;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    vertical-align: 1.0;
+    text-color: @text-hi;
+}
+
+element-icon {
+    size: 48px;
+    horizontal-align: 0.5;
+}
